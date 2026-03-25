@@ -1,6 +1,12 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('desktopApi', {
+  getProxyConfig() {
+    return ipcRenderer.invoke('proxy:get-config');
+  },
+  setProxyConfig(settings) {
+    return ipcRenderer.invoke('proxy:set-config', settings);
+  },
   searchAnime(keyword) {
     return ipcRenderer.invoke('catalog:search', { keyword });
   },

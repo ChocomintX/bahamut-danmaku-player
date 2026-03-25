@@ -54,8 +54,8 @@ function extractMatch(text, pattern) {
   return match?.[1] ? cleanHtmlText(match[1]) : '';
 }
 
-async function fetchHtml(url, options = {}) {
-  const response = await fetch(url, {
+async function fetchHtml(url, options = {}, fetchImpl = fetch) {
+  const response = await fetchImpl(url, {
     signal: AbortSignal.timeout(20_000),
     ...options,
   });
@@ -184,10 +184,14 @@ function parseSeriesDetail(html, animeSn) {
   };
 }
 
-async function fetchBahamutSeriesDetail(animeSn) {
-  const html = await fetchHtml(`${ANI_ROOT}/animeRef.php?sn=${animeSn}`, {
-    headers: createHeaders(`${ANI_ROOT}/search.php`),
-  });
+async function fetchBahamutSeriesDetail(animeSn, fetchImpl = fetch) {
+  const html = await fetchHtml(
+    `${ANI_ROOT}/animeRef.php?sn=${animeSn}`,
+    {
+      headers: createHeaders(`${ANI_ROOT}/search.php`),
+    },
+    fetchImpl,
+  );
 
   return parseSeriesDetail(html, animeSn);
 }

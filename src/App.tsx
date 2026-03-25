@@ -1514,6 +1514,42 @@ export default function App() {
                   导出 JSON
                 </button>
               </div>
+              {/*
+              <div className="proxy-panel">
+                <div className="proxy-panel__header">
+                  <div>
+                    <strong>系统代理</strong>
+                    <span>搜索、剧集列表和弹幕请求都会跟随系统代理。适合 Clash、v2rayN 等已接管系统代理的场景。</span>
+                  </div>
+                  <small>{formatProxyModeLabel(proxySettings.mode)}</small>
+                </div>
+                <div className="proxy-panel__hint">
+                  当前版本只保留系统代理模式，旧的手动代理和直连配置会被自动忽略。
+                </div>
+                <div className="action-row action-row--compact">
+                  <button
+                    type="button"
+                    className="button button--ghost"
+                    onClick={() => void loadProxyConfig()}
+                    disabled={isApplyingProxy}
+                  >
+                    读取代理状态
+                  </button>
+                  <button
+                    type="button"
+                    className="button button--primary"
+                    onClick={() => void applyProxyConfig()}
+                    disabled={isApplyingProxy}
+                  >
+                    {isApplyingProxy ? '应用中...' : '重新应用系统代理'}
+                  </button>
+                </div>
+                <div className="proxy-panel__status">
+                  <span>代理解析</span>
+                  <code>{proxyResolvedText || `未解析 · ${PROXY_TEST_TARGET}`}</code>
+                </div>
+              </div>
+              */}
             </div>
           )}
         </section>
